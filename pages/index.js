@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import Link from 'next/link'
 import Head from 'next/head'
 import Nav from "../components/nav"
@@ -8,7 +8,18 @@ import Carousel from '../components/carousel';
 import MovieList from '../components/movieList';
 import Footer from '../components/footer';
 
-const Home = () => (
+const Home = () =>{
+   
+  const [count,setCount] = useState(0);
+   const increment = ()=>{
+        setCount(count+1);
+    }
+
+   const decrement = ()=>{
+        setCount(count-1);
+    }
+
+   return(
   <div>
     <Head>
       <title>Home</title>
@@ -22,11 +33,15 @@ const Home = () => (
 
   <div className="home-page">
     <div className="container">
+        <button className="btn btn-primary" onClick={increment}>Increment Number</button>
+        <button className="btn btn-primary" onClick={decrement}>Decrement Number</button>
       <div className="row">
 
         <div className="col-lg-3">
 
-          <SideMenu/>
+          <SideMenu 
+            count = {count}
+          />
         </div>
 
         <div className="col-lg-9">
@@ -34,7 +49,9 @@ const Home = () => (
 
           <div className="row">
 
-            <MovieList/>
+            <MovieList
+              count = {count}
+            />
 
           </div>
         </div>
@@ -49,6 +66,7 @@ const Home = () => (
              `}
     </style>
   </div>
-)
+);
+}
 
 export default Home
