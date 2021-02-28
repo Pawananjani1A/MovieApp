@@ -33,7 +33,7 @@ class MovieList extends React.Component{
 render (){
    const {movies} = this.props;
    return (<React.Fragment>
-          {this.renderMovies(movies)}
+          {movies?this.renderMovies(movies):null}
     </React.Fragment>);
 }
    

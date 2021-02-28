@@ -14,6 +14,11 @@ import {getMovies} from "../actions";
 
 const Home = () =>{
    
+  const [movies,setMovies] = useState([]);
+
+  getMovies().then(movies=>{
+    setMovies(movies);
+  });
   
    return(
   <div>
@@ -43,7 +48,7 @@ const Home = () =>{
           <div className="row">
 
             <MovieList 
-              movies={getMovies()}
+              movies={movies}
             />
 
           </div>
