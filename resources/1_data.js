@@ -1,4 +1,4 @@
-[
+export const MOVIE_DATA = [
   {
     id: '1',
     name: 'The Shawshank Redemption',
