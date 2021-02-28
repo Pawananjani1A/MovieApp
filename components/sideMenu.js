@@ -12,9 +12,6 @@ const SideMenu = ({count})=>{
             <a href="#" className="list-group-item">Category 2</a>
             <a href="#" className="list-group-item">Category 3</a>
             </div>
-           <div>
-            <h1>{count}</h1>
-          </div>
         </div>
     );
 };
