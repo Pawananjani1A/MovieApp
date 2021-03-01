@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import Link from 'next/link'
 import Head from 'next/head'
 import Nav from "../components/nav"
@@ -12,14 +12,12 @@ import {getMovies} from "../actions";
 
 
 
-const Home = () =>{
+const Home = (props) =>{
    
-  const [movies,setMovies] = useState([]);
+ 
+ 
 
-  getMovies().then(movies=>{
-    setMovies(movies);
-  });
-  
+   
    return(
   <div>
     <Head>
@@ -46,9 +44,8 @@ const Home = () =>{
           <Carousel/>
 
           <div className="row">
-
             <MovieList 
-              movies={movies}
+              movies={props.movies}
             />
 
           </div>
@@ -65,6 +62,14 @@ const Home = () =>{
     </style>
   </div>
 );
+}
+
+Home.getInitialProps= async()=>{
+  const movies = await getMovies();
+
+  return {
+    movies
+  } 
 }
 
 export default Home
