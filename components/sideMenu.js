@@ -1,11 +1,15 @@
 import {useState} from 'react';
-
+import Modal from "./Modal";
+import MovieCreateForm from "./movieCreateForm";
 
 const SideMenu = (props)=>{
 
  const {appName,categories} = props;
     return  (
         <div>
+            <Modal hasSubmit={true}>
+                <MovieCreateForm/>
+            </Modal>
             <h1 className="my-4">{appName}</h1>
             <div className="list-group">
             {
@@ -14,6 +18,7 @@ const SideMenu = (props)=>{
                 ))
             }
             </div>
+           
         </div>
     );
 };
