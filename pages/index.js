@@ -12,9 +12,9 @@ import {getMovies,getCategories} from "../actions";
 const Home = (props) =>{
    
  
- const {images,movies} = props;
+ const {images,movies,categories} = props;
 //  console.log(images);
-
+// console.log(categories);
    
    return(
   <div>
@@ -26,7 +26,10 @@ const Home = (props) =>{
 
         <div className="col-lg-3">
 
-          <SideMenu />
+          <SideMenu 
+            categories={categories}
+            appName={"MovieDB"}
+          />
         </div>
 
         <div className="col-lg-9">
