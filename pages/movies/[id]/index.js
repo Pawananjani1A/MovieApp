@@ -38,9 +38,10 @@ const Movie = (props) =>{
     );
 }
 
-Movie.getInitialProps = async({query})=>{
+Movie.getInitialProps = async(context)=>{
     
-  const movie = await getMovieById(query.id);
+  const {id} = context.query;
+  const movie = await getMovieById(id);
 
   return {movie};
 }
