@@ -40,3 +40,16 @@ export const getMovieById = (id)=>{
         },50);
     })
 }
+
+
+export const createMovie = (movie) =>{
+    
+    //create id of the movie
+    return new Promise((resolve, reject)=>{
+        MOVIE_DATA.push(movie);
+       setTimeout(()=>{
+     resolve(MOVIE_DATA);
+    // reject("Couldn't fetch data");
+    },50);
+    })   
+}

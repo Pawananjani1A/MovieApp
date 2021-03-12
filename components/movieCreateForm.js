@@ -2,8 +2,9 @@ import {useState} from 'react';
 
 import Form from "../resources/2_create-form";
 
-const MovieCreateForm = ()=>{
+const MovieCreateForm = (props)=>{
 
+    //Fix uncontrolled data functionality
     const [formData,setFormData] = useState({
           name:'Some Movie',
           description:'Some Description',
@@ -41,12 +42,17 @@ const handleGenreChange = (event)=>{
 
 }
 
+const submitform = () => {
+    props.handleFormSubmit({...formData})
+  }
+
 
     return (
        <Form 
            formData={formData}
            handleChange={handleChange}
            handleGenreChange={handleGenreChange}
+           submitform={submitform}
        />
     );
 }

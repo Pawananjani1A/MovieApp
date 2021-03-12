@@ -95,6 +95,12 @@ return (<form>
       <option>action</option>
     </select>
   </div>
+  <button
+        onClick={props.submitform}
+        type="button"
+        className="btn btn-primary">
+          { props.submitButton || 'Create' }
+      </button>
 </form>)
 }
 
