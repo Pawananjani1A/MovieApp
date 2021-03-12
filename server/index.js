@@ -1,5 +1,6 @@
 const next = require('next');
 const express = require('express');
+const bodyParser = require('body-parser');
 
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
@@ -8,7 +9,30 @@ const handle = app.getRequestHandler()
 app.prepare().then(() => {
 
   const server = express();
-  //we're handling all the requests oming to our server
+
+  server.use(express.json());
+
+
+  server.get('/api/v1/movies',(req,res)=>{
+     return res.json({message:'Hello World!'});
+  })
+
+  server.post('/api/v1/movies',(req,res)=>{
+      const movie = req.body;
+     return res.json({...movie,createdTime:new Date().toISOString(),author:"Tester"});
+  })
+
+  server.patch('/api/v1/movies/:id',(req,res)=>{
+      const {id} = req.params;
+     return res.json({message:`Updating movie with id=${id}`});
+  })
+
+  server.delete('/api/v1/movies/:id',(req,res)=>{
+     const {id} = req.params;
+     return res.json({message:`Deleting movie with id=${id}`});
+  })
+
+  //we're handling all the requests coming to our server
   server.get('*', (req, res) => {
       //nextjs is handling requests
     return handle(req, res)
