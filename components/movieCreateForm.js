@@ -6,12 +6,12 @@ const MovieCreateForm = (props)=>{
 
     //Fix uncontrolled data functionality
     const [formData,setFormData] = useState({
-          name:'Some Movie',
-          description:'Some Description',
-          rating:5,
-          longDesc:"Some long Description",
-          image:"Some img url",
-          cover:"Some Cover url",
+          name:'',
+          description:'',
+          rating:0,
+          longDesc:"",
+          image:"",
+          cover:"",
 
     });
 
