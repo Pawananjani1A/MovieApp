@@ -21,7 +21,7 @@ class Modal extends React.Component {
   render() {
     return (
       <div>
-        <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        <button type="button" className="btn" data-toggle="modal" data-target="#exampleModal" style={{backgroundColor:'#f1c40f'}}>
           Create Movie
         </button>
 
@@ -29,7 +29,7 @@ class Modal extends React.Component {
           <div className="modal-dialog" role="document">
             <div className="modal-content">
               <div className="modal-header">
-                <h5 className="modal-title" id="exampleModalLabel">Create Movie</h5>
+                <h5 className="modal-title" id="exampleModalLabel" style={{'color':'black'}}>Create Movie</h5>
                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>

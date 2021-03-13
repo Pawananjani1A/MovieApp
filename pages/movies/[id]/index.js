@@ -10,9 +10,9 @@ const Movie = (props) =>{
 
     return (
           <div className="container">
-      <div className="jumbotron">
+      <div className="jumbotron" style={{'color':'black'}}>
         <h1 className="display-4">{ movie.name }</h1>
-        <p className="lead">{ movie.description }</p>
+        <p className="lead" >{ movie.description }</p>
         <hr className="my-4" />
         <p>{ movie.genre }</p>
         <button className="btn btn-primary btn-lg mr-1" href="#" role="button">Learn more</button>

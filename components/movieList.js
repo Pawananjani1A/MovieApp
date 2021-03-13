@@ -23,8 +23,8 @@ class MovieList extends React.Component{
                           <Link href={`/movies/${movie.id}`}><a>{movie.name}</a></Link>
                             
                           </h4>
-                          <h5>$24.99</h5>
-                          <p className="card-text">{this.shorten(movie.description,200)}</p>
+                          <h5 style={{'color':'black'}}>$24.99</h5>
+                          <p className="card-text" style={{'color':'black'}}>{this.shorten(movie.description,200)}</p>
                         </div>
                         <div className="card-footer">
                           <small className="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734; {movie.rating}</small>
