@@ -12,9 +12,11 @@ app.prepare().then(() => {
 
   server.use(express.json());
 
+const moviesData = require("./data.json");
+
 
   server.get('/api/v1/movies',(req,res)=>{
-     return res.json({message:'Hello World!'});
+     return res.json(moviesData);
   })
 
   server.post('/api/v1/movies',(req,res)=>{
