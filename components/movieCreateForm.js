@@ -4,23 +4,27 @@ import Form from "../resources/2_create-form";
 
 const MovieCreateForm = (props)=>{
 
+    const [ isInitialDataLoaded, setIsInitialDataLoaded] = useState(false);
+
+  const defaultData = {
+    name: '',
+    description: '',
+    rating: '',
+    image: '',
+    cover: '',
+    longDesc: ''
+  }
+  
+  const initialData = props.initialData ? {...props.initialData} : defaultData
     //Fix uncontrolled data functionality
-    const [formData,setFormData] = useState({
-          name:'',
-          description:'',
-          rating:0,
-          longDesc:"",
-          image:"",
-          cover:"",
+  const [formData,setFormData] = useState(initialData);
 
-    });
-
-useEffect(()=>{
-    if(props.initialData)
-{
-    setFormData(props.initialData);
-}
-},[])
+  // useEffect(() => {
+  //   if (props.initialData) {
+  //     setform(props.initialData)
+  //     setIsInitialDataLoaded(true)
+  //   }
+  // }, [isInitialDataLoaded])
 
 const handleChange = (event)=>{
  

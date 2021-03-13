@@ -3,7 +3,7 @@ const Form = (props)=>{
   const {formData}  = props;
   
 return (<form>
-    <p>{JSON.stringify(formData)}</p> 
+    {/* <p>{JSON.stringify(formData)}</p>  */}
   <div className="form-group">
     <label htmlFor="name">Name</label>
     <input

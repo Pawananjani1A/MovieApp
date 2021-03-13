@@ -11,13 +11,18 @@ const CATEGORY_DATA = [
   {id: 'c-4', name: 'historical'},
 ]
 
-export const getCategories = ()=>{
+export const getCategories = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(CATEGORY_DATA)
+      // reject('Cannot fetch data!')
+    }, 50)
+  })
+}
 
-    return new Promise((resolve, reject)=>{
-        setTimeout(()=>{
-            resolve(CATEGORY_DATA);
-        },50)
-    })
+export const getMoviesByCategory = (category)=>{
+  
+  return axios.get(`${BASE_URL}/api/v1/categories/${category}`).then(res=>res.data);
 }
 
 export const getMovies = () =>{

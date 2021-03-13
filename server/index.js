@@ -46,6 +46,16 @@ const moviesData = require(filePath);
      return res.json(movie);
   })
 
+  server.get('/api/v1/categories/:category',(req,res)=>{
+    const {category} = req.params;
+    let c = [];
+   for(let i=0;i<moviesData.length;i++)
+       if(moviesData[i].genre.split(",").includes(category)) 
+           c.push(moviesData[i]);
+
+   return res.json(c);
+  })
+
   server.delete('/api/v1/movies/:id',(req,res)=>{
       const { id } = req.params
     const movieIndex = moviesData.findIndex(m => m.id === id)
@@ -59,7 +69,7 @@ const moviesData = require(filePath);
         return res.status(422).send(err)
       }
 
-      return res.json(`Movie with id=${id} has been succesfuly deleted!`)
+      return res.json(`Movie with id=${id} has been succesfuly deleted!`);
     })
   })
 
@@ -78,7 +88,7 @@ const moviesData = require(filePath);
         return res.status(422).send(err)
       }
 
-      return res.json(movie)
+      return res.json(`Movie with id=${id} has been succesfuly updated!`);
     })
   })
 

@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import { useRouter } from 'next/router';
 import Modal from "./Modal";
+import Link from 'next/link';
 import MovieCreateForm from "./movieCreateForm";
 import {createMovie} from "../actions";
 
@@ -29,7 +30,10 @@ const SideMenu = (props)=>{
             <div className="list-group">
             {
                 categories.map((category)=>(
-                   <a key={category.id} href="#"  className="list-group-item">{category.name.toUpperCase()}</a>
+                    <Link key={category.id} href={`/categories/${category.name}`}>
+                         <a key={category.id}  className="list-group-item">{category.name.toUpperCase()}</a>
+                    </Link>
+                   
                 ))
             }
             </div>
