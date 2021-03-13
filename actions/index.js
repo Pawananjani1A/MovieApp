@@ -1,4 +1,3 @@
-import {MOVIE_DATA} from "../resources/1_data";
 import axios from "axios";
 
 const BASE_URL = 'http://localhost:3000';
@@ -35,4 +34,12 @@ export const createMovie = (movie) =>{
     //create id of the movie
     movie.id = Math.random().toString(36).substr(2, 5);
    return axios.post(`${BASE_URL}/api/v1/movies`,movie).then(res=>res.data);
+}
+
+export const updateMovie = (movie) => {
+  return axios.patch(`${BASE_URL}/api/v1/movies/${movie.id}`, movie).then(res => res.data);
+}
+
+export const deleteMovie = (id) => {
+  return axios.delete(`${BASE_URL}/api/v1/movies/${id}`).then(res => res.data);
 }
