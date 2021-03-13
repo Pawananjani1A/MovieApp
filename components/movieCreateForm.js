@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 
 import Form from "../resources/2_create-form";
 
@@ -14,6 +14,13 @@ const MovieCreateForm = (props)=>{
           cover:"",
 
     });
+
+useEffect(()=>{
+    if(props.initialData)
+{
+    setFormData(props.initialData);
+}
+},[])
 
 const handleChange = (event)=>{
  
@@ -53,6 +60,7 @@ const submitform = () => {
            handleChange={handleChange}
            handleGenreChange={handleGenreChange}
            submitform={submitform}
+           submitButton={props.submitButton}
        />
     );
 }
