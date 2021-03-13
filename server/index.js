@@ -35,7 +35,7 @@ const moviesData = require(filePath);
         return res.status(422).send(err)
       }
 
-      return res.json('Movie has been succesfuly added!')
+      return res.json(`Movie with id=${id} has been succesfuly added!`)
     })
 
   })
@@ -47,15 +47,46 @@ const moviesData = require(filePath);
   })
 
   server.delete('/api/v1/movies/:id',(req,res)=>{
-     const {id} = req.params;
-     return res.json({message:`Deleting movie with id=${id}`});
+      const { id } = req.params
+    const movieIndex = moviesData.findIndex(m => m.id === id)
+    moviesData.splice(movieIndex, 1)
+
+    const pathToFile = path.join(__dirname, filePath)
+    const stringifiedData = JSON.stringify(moviesData, null, 2)
+
+    fs.writeFile(pathToFile, stringifiedData, (err) => {
+      if (err) {
+        return res.status(422).send(err)
+      }
+
+      return res.json(`Movie with id=${id} has been succesfuly deleted!`)
+    })
   })
 
-  //we're handling all the requests coming to our server
-  server.get('*', (req, res) => {
-      //nextjs is handling requests
-    return handle(req, res)
+  server.patch('/api/v1/movies/:id',(req,res)=>{
+     const { id } = req.params
+    const movie = req.body
+    const movieIndex = moviesData.findIndex(m => m.id === id)
+
+    moviesData[movieIndex] = movie
+
+    const pathToFile = path.join(__dirname, filePath)
+    const stringifiedData = JSON.stringify(moviesData, null, 2)
+
+    fs.writeFile(pathToFile, stringifiedData, (err) => {
+      if (err) {
+        return res.status(422).send(err)
+      }
+
+      return res.json(movie)
+    })
   })
+
+  // //we're handling all the requests coming to our server
+  // server.get('*', (req, res) => {
+  //     //nextjs is handling requests
+  //   return handle(req, res)
+  // })
 
   const PORT = process.env.PORT || 3000;
 
