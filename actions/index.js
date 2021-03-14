@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = 'https://movie-app-ochre.vercel.app';
+const BASE_URL = 'https://movie-app-r0qjsjy8o-pawananjani1a.vercel.app';
 
 
 const CATEGORY_DATA = [
